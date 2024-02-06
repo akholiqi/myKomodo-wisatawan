@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "285616272501",
+    "project_id": "mykomodov2-72979",
+    "storage_bucket": "mykomodov2-72979.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285616272501:android:032b8ae457d888112df43c",
+        "android_client_info": {
+          "package_name": "com.mycompany.mykomodov2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285616272501-0j2735jh193g3upmgfbrqqbbsd7elbjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4bFjfVvXifd_6tSG1nihVXGiNsfLy2cQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285616272501-0j2735jh193g3upmgfbrqqbbsd7elbjs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "285616272501-4cqui5u6hdrk8q2ij7pqc3nf66gvlor0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.mykomodov2"
+              }
+            },
+            {
+              "client_id": "285616272501-l9r9s19s8f2v6o5b70tsq4m98hlrnfvr.apps.googleusercontent.com",
+              "client_type": 2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

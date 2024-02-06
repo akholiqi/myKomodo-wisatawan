@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "611975610891",
+    "project_id": "mykomodo-7755c",
+    "storage_bucket": "mykomodo-7755c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611975610891:android:09d54a1508e958c292fd0e",
+        "android_client_info": {
+          "package_name": "com.kabtour.mykomodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611975610891-fiqboi6it4tgb0kaa9gq208ng7t7bado.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kabtour.mykomodo",
+            "certificate_hash": "1d7c27082c13e41cb81455fcafd1d29b9cae15c7"
+          }
+        },
+        {
+          "client_id": "611975610891-jmbgg643024hn1jp5quc27se66nmgpce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kabtour.mykomodo",
+            "certificate_hash": "aa26432d7bbcfa96e83f250ba026f06869eecb21"
+          }
+        },
+        {
+          "client_id": "611975610891-urcr6crfrdn4t5c2jhg6h6tgf9hghj9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk20DkT2vchllGe16gxCov9FfLg7QzuzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611975610891-urcr6crfrdn4t5c2jhg6h6tgf9hghj9f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611975610891-knevgdresr6cevk5f6ru7369ifsjct26.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kabtour.mykomodo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
