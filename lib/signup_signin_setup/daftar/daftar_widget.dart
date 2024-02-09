@@ -114,9 +114,8 @@ class _DaftarWidgetState extends State<DaftarWidget> {
               'create_account': 'yes'
             };
             print('Param kirim: $params');
-            chatAccount = await apiClient.post(
-                'https://chat.kabtour.com/api_request/',
-                data: params);
+            chatAccount = await apiClient
+                .post('https://chat.kabtour.com/api_request/', data: params);
             print('akun chat: $chatAccount');
             chatAccount = jsonDecode(chatAccount['body']);
             if (chatAccount!['success']) {
@@ -203,16 +202,20 @@ class _DaftarWidgetState extends State<DaftarWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          'Manggarai Barat',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).displaySmall,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/app_launcher_icon.png',
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),

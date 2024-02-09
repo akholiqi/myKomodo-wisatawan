@@ -42,6 +42,9 @@ import 'home_page_model.dart';
 export 'home_page_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
@@ -61,8 +64,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   List<String> imgList = [
-    'assets/images/Tentang_Kab.jpg',
-    'assets/images/Disclaimer.jpg',
+    'assets/images/banner1.png',
+    'assets/images/banner2.png',
+    'assets/images/banner3.png',
     // Add more image paths as needed
   ];
 
@@ -161,29 +165,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                 if (scannedValue != '-1') {
                   print(scannedValue);
-                  
+
                   List<String> scanned = scannedValue.split('/');
-                  if(scanned[2]=='m.mykomodo.kabtour.com'){
-                    if(FFAppState().accessToken.isNotEmpty){
+                  if (scanned[2] == 'm.mykomodo.kabtour.com') {
+                    if (FFAppState().accessToken.isNotEmpty) {
                       List<String> paramData = scanned[3].split('=');
                       String tiketId = paramData[1];
-                      Get.off(() => ScanPageWidget( isScannedValue: tiketId));
-                    }else{
+                      Get.off(() => ScanPageWidget(isScannedValue: tiketId));
+                    } else {
                       Get.defaultDialog(
-                        title: "Login dulu",
-                        middleText: "Silakan login untuk melakukan scan dan mendapatkan poin",
-                        onConfirm: () => Get.off(()=>LoginPageWidget())
-                      );
+                          title: "Login dulu",
+                          middleText:
+                              "Silakan login untuk melakukan scan dan mendapatkan poin",
+                          onConfirm: () => Get.off(() => LoginPageWidget()));
                     }
-                    
-                  } else{
+                  } else {
                     Get.defaultDialog(
                         title: "Kode QR Tidak Sesuai",
-                        middleText: "Silakan silahkan download aplikasi MyKomodo untuk scan",
-                        onConfirm: () => Get.off(()=>NavBarPage(initialPage: 'Home_page',))
-                      );
+                        middleText:
+                            "Silakan silahkan download aplikasi MyKomodo untuk scan",
+                        onConfirm: () => Get.off(() => NavBarPage(
+                              initialPage: 'Home_page',
+                            )));
                   }
-                  
                 } else {
                   Get.offAll(() => NavBarPage(initialPage: 'Home_Page'));
                 }
@@ -225,153 +229,163 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: Get.width,
-                  child: Stack(
-                    children: [
-                      ClipPath(
-                        clipper: ClipPathClass(),
-                        child: Container(
-                          height: 180,
-                          width: Get.width,
-                          color: blue1,
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TentangKabupatenWidget()), // TentangKabupatenWidget AboutUs Gantilah HalamanTujuan dengan halaman yang sesuai
+                    );
+                  },
+                  child: Container(
+                    width: Get.width,
+                    child: Stack(
+                      children: [
+                        ClipPath(
+                          clipper: ClipPathClass(),
+                          child: Container(
                             height: 180,
-                            width: double.infinity,
-                            child: CarouselSlider(
-                              items: imgList.map((imagePath) {
-                                return Image.asset(
-                                  imagePath,
-                                  width: double.infinity,
-                                  // fit: BoxFit.cover,
-                                );
-                              }).toList(),
-                              carouselController: _controller,
-                              options: CarouselOptions(
-                                  autoPlay: true,
-                                  enlargeCenterPage: true,
-                                  aspectRatio: 2.0,
-                                  onPageChanged: (index, reason) {
-                                    setState(() {
-                                      _current = index;
-                                    });
-                                  }),
-                            ),
+                            width: Get.width,
+                            color: blue1,
                           ),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.center,
-                          //   children: imgList.asMap().entries.map((entry) {
-                          //     return GestureDetector(
-                          //       onTap: () =>
-                          //           _controller.animateToPage(entry.key),
-                          //       child: Container(
-                          //         width: 12.0,
-                          //         height: 12.0,
-                          //         margin: EdgeInsets.symmetric(
-                          //             vertical: 8.0, horizontal: 4.0),
-                          //         decoration: BoxDecoration(
-                          //             shape: BoxShape.circle,
-                          //             color: (Theme.of(context).brightness ==
-                          //                         Brightness.dark
-                          //                     ? Colors.white
-                          //                     : Colors.black)
-                          //                 .withOpacity(_current == entry.key
-                          //                     ? 0.9
-                          //                     : 0.4)),
-                          //       ),
-                          //     );
-                          //   }).toList(),
-                          // ),
-                        ],
-                      ),
-                      // Column(
-                      //   mainAxisSize: MainAxisSize.max,
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.all(30.0),
-                      //       child: Container(
-                      //         margin: EdgeInsets.only(top: 100),
-                      //         width: Get.width,
-                      //         height: 50,
-                      //         decoration: BoxDecoration(
-                      //           boxShadow: [
-                      //             BoxShadow(
-                      //               color: Colors.black
-                      //                   .withOpacity(0.1), // Shadow color
-                      //               spreadRadius: 1, // Spread radius
-                      //               blurRadius: 5, // Blur radius
-                      //               offset: Offset(0,
-                      //                   3), // Offset in the x and y direction
-                      //             ),
-                      //           ],
-                      //           color: Colors.white,
-                      //           borderRadius: BorderRadius.circular(16),
-                      //           border: Border.all(
-                      //             color: FlutterFlowTheme.of(context)
-                      //                 .secondaryText,
-                      //           ),
-                      //         ),
-                      //         child: Padding(
-                      //           padding:
-                      //               EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                      //           child: InkWell(
-                      //             onTap: () async {
-                      //               Get.to(() => SearchPage());
-                      //               // Get.to(()=>ChatWidget());
-                      //             },
-                      //             // onTap: () async {
-                      //             //   Get.to(
-                      //             //     () => SearchProdukWidget(
-                      //             //         dataPage: 'HomeUMKMWidget()'),
-                      //             //     arguments: {
-                      //             //       'dataPage': 'HomeUMKMWidget()'
-                      //             //     },
-                      //             //   );
-                      //             // },
-                      //             child: Row(
-                      //               mainAxisSize: MainAxisSize.min,
-                      //               mainAxisAlignment: MainAxisAlignment.start,
-                      //               children: [
-                      //                 Icon(
-                      //                   Icons.search,
-                      //                   color: blue1,
-                      //                   size: 24,
-                      //                 ),
-                      //                 SizedBox(
-                      //                   width: 10,
-                      //                 ),
-                      //                 Text(
-                      //                   "Beragam pilihan UMKM",
-                      //                   style:
-                      //                       regular12_5.copyWith(color: dark2),
-                      //                 )
-                      //                 // TextField(
-                      //                 //   // controller: _searchController,
-                      //                 //   decoration: InputDecoration(
-                      //                 //     hintText: 'Cari...',
-                      //                 //     border: InputBorder.none,
-                      //                 //     prefixIcon: Icon(
-                      //                 //       Icons.search,
-                      //                 //     ),
-                      //                 //   ),
-                      //                 //   onChanged: (query) {
-                      //                 //     print(query);
-                      //                 //   },
-                      //                 // ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                    ],
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              height: 230,
+                              width: double.infinity,
+                              child: CarouselSlider(
+                                items: imgList.map((imagePath) {
+                                  return Image.asset(
+                                    imagePath,
+                                    width: double.infinity,
+                                    // fit: BoxFit.cover,
+                                  );
+                                }).toList(),
+                                carouselController: _controller,
+                                options: CarouselOptions(
+                                    autoPlay: true,
+                                    enlargeCenterPage: true,
+                                    aspectRatio: 2.0,
+                                    onPageChanged: (index, reason) {
+                                      setState(() {
+                                        _current = index;
+                                      });
+                                    }),
+                              ),
+                            ),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: imgList.asMap().entries.map((entry) {
+                            //     return GestureDetector(
+                            //       onTap: () =>
+                            //           _controller.animateToPage(entry.key),
+                            //       child: Container(
+                            //         width: 12.0,
+                            //         height: 12.0,
+                            //         margin: EdgeInsets.symmetric(
+                            //             vertical: 8.0, horizontal: 4.0),
+                            //         decoration: BoxDecoration(
+                            //             shape: BoxShape.circle,
+                            //             color: (Theme.of(context).brightness ==
+                            //                         Brightness.dark
+                            //                     ? Colors.white
+                            //                     : Colors.black)
+                            //                 .withOpacity(_current == entry.key
+                            //                     ? 0.9
+                            //                     : 0.4)),
+                            //       ),
+                            //     );
+                            //   }).toList(),
+                            // ),
+                          ],
+                        ),
+                        // Column(
+                        //   mainAxisSize: MainAxisSize.max,
+                        //   children: [
+                        //     Padding(
+                        //       padding: const EdgeInsets.all(30.0),
+                        //       child: Container(
+                        //         margin: EdgeInsets.only(top: 100),
+                        //         width: Get.width,
+                        //         height: 50,
+                        //         decoration: BoxDecoration(
+                        //           boxShadow: [
+                        //             BoxShadow(
+                        //               color: Colors.black
+                        //                   .withOpacity(0.1), // Shadow color
+                        //               spreadRadius: 1, // Spread radius
+                        //               blurRadius: 5, // Blur radius
+                        //               offset: Offset(0,
+                        //                   3), // Offset in the x and y direction
+                        //             ),
+                        //           ],
+                        //           color: Colors.white,
+                        //           borderRadius: BorderRadius.circular(16),
+                        //           border: Border.all(
+                        //             color: FlutterFlowTheme.of(context)
+                        //                 .secondaryText,
+                        //           ),
+                        //         ),
+                        //         child: Padding(
+                        //           padding:
+                        //               EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                        //           child: InkWell(
+                        //             onTap: () async {
+                        //               Get.to(() => SearchPage());
+                        //               // Get.to(()=>ChatWidget());
+                        //             },
+                        //             // onTap: () async {
+                        //             //   Get.to(
+                        //             //     () => SearchProdukWidget(
+                        //             //         dataPage: 'HomeUMKMWidget()'),
+                        //             //     arguments: {
+                        //             //       'dataPage': 'HomeUMKMWidget()'
+                        //             //     },
+                        //             //   );
+                        //             // },
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               mainAxisAlignment: MainAxisAlignment.start,
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.search,
+                        //                   color: blue1,
+                        //                   size: 24,
+                        //                 ),
+                        //                 SizedBox(
+                        //                   width: 10,
+                        //                 ),
+                        //                 Text(
+                        //                   "Beragam pilihan UMKM",
+                        //                   style:
+                        //                       regular12_5.copyWith(color: dark2),
+                        //                 )
+                        //                 // TextField(
+                        //                 //   // controller: _searchController,
+                        //                 //   decoration: InputDecoration(
+                        //                 //     hintText: 'Cari...',
+                        //                 //     border: InputBorder.none,
+                        //                 //     prefixIcon: Icon(
+                        //                 //       Icons.search,
+                        //                 //     ),
+                        //                 //   ),
+                        //                 //   onChanged: (query) {
+                        //                 //     print(query);
+                        //                 //   },
+                        //                 // ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                      ],
+                    ),
                   ),
                 ),
                 SingleChildScrollView(
@@ -401,7 +415,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF0281A0),
+                                    color: Color.fromARGB(255, 241, 70, 2),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -422,7 +436,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding:
+                              const EdgeInsets.only(right: 20.0, left: 10.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -438,7 +453,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 0, 133, 40),
+                                    color: Color.fromARGB(255, 209, 189, 4),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -471,7 +486,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFFF0F00),
+                                    color: const Color(0xFF0281A0),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -504,7 +519,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Color(0xff00880F),
+                                    color: Color.fromARGB(255, 2, 160, 28),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -541,7 +556,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFFF0F00),
+                                    color: Color.fromARGB(255, 171, 99, 204),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -575,7 +590,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   width: 50,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: Color.fromARGB(255, 70, 102, 190),
                                     borderRadius: BorderRadius.circular(16),
                                   ),
                                   child: const Icon(
@@ -964,13 +979,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         style: bold16.copyWith(color: dark1),
                       ),
                       InkWell(
-                        onTap: () async {Get.to(
-                                              () => ListTourWidget(
-                                                  dataPage: 'ListTourWidget()'),
-                                              arguments: {
-                                                'dataPage': 'ListTourWidget()'
-                                              },
-                                            );
+                        onTap: () async {
+                          Get.to(
+                            () => ListTourWidget(dataPage: 'ListTourWidget()'),
+                            arguments: {'dataPage': 'ListTourWidget()'},
+                          );
                         },
                         child: Text(
                           'Lihat Semua',
@@ -2025,50 +2038,46 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       ],
                                                     ),
                                                   ),
-                                                  
-                                                  
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      5.0, 5.0, 0.0, 0.0.sp),
-                                              child: Row(
-                                                mainAxisSize:
-                                                    MainAxisSize.max,
-                                                children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                0.0,
-                                                                0.0,
-                                                                5.0,
-                                                                0.0.sp),
-                                                    child: Icon(
-                                                      Icons.location_on,
-                                                      color: const Color
-                                                                  .fromARGB(
-                                                                  255,
-                                                                  65,
-                                                                  64,
-                                                                  64),
-                                                      size: 10.0.sp,
+                                                            .fromSTEB(5.0, 5.0,
+                                                                0.0, 0.0.sp),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0.sp),
+                                                          child: Icon(
+                                                            Icons.location_on,
+                                                            color: const Color
+                                                                .fromARGB(255,
+                                                                65, 64, 64),
+                                                            size: 10.0.sp,
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            getJsonField(
+                                                              listUmkmItem,
+                                                              r'''$.location_name''',
+                                                            ).toString(),
+                                                            style: semibold14
+                                                                .copyWith(
+                                                                    color:
+                                                                        dark2),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
-                                                  Expanded(
-                                                    child: Text(
-                                                      getJsonField(
-                                                        listUmkmItem,
-                                                        r'''$.location_name''',
-                                                      ).toString(),
-                                                      style:
-                                                          semibold14.copyWith(
-                                                              color: dark2),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                                  
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
@@ -2504,7 +2513,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
@@ -2592,7 +2600,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               ],
                                                             ),
                                                           ),
-                                                         
                                                         ],
                                                       ),
                                                       // Padding(

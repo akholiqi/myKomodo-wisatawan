@@ -41,7 +41,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
         //     builder: (context) => NavBarPage(initialPage: 'Home_Page'),
         //   ),
         // );
-        Get.off(()=>NavBarPage(initialPage: 'Home_Page'));
+        Get.off(() => NavBarPage(initialPage: 'Home_Page'));
       }
     });
   }
@@ -96,7 +96,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                             child: Image.asset(
                               'assets/images/Onboarding.png',
                               width: 300,
-                              height: 200,
+                              height: 310,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -133,7 +133,11 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                       child: Text(
                         'Nikmati Semua keuntungannya',
-                        style: bold16.copyWith(color: dark1),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'Fredoka',
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                     Padding(

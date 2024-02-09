@@ -122,21 +122,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                   // Generated code for this Text Widget...
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 40, 0, 0),
+                                        0, 60, 0, 0),
                                     child: Text(
                                       'Mulai Perjalananmu, yuk!',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleLargeFamily,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLargeFamily),
-                                          ),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontFamily: 'Fredoka',
+                                          fontWeight: FontWeight.w400),
                                     ),
                                   ),
                                   Padding(
@@ -260,8 +253,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                 borderRadius: BorderRadius.circular(8),
                                 child: Image.asset(
                                   'assets/images/Lambang_Kabupaten_Manggarai_Barat.png',
-                                  width: 150,
-                                  height: 150,
+                                  width: 130,
+                                  height: 130,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -286,18 +279,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               ),
                               Text(
                                 'Manggarai Barat',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineLarge
-                                    .override(
-                                      fontFamily: 'Montserrat',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontWeight: FontWeight.w600,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineLargeFamily),
-                                    ),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                    fontFamily: 'Fredoka',
+                                    fontWeight: FontWeight.w400),
                               ),
                             ],
                           ),
@@ -425,12 +411,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 40, 0, 0),
+                                        0, 60, 0, 0),
                                     child: AutoSizeText(
                                       'Dapatkan semua keseruan!',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge,
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 20,
+                                          fontFamily: 'Fredoka',
+                                          fontWeight: FontWeight.w400),
                                     ),
                                   ),
                                   Padding(

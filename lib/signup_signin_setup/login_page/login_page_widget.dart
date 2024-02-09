@@ -64,12 +64,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
       //     await _googleSignIn.signIn();
       AuthProvider authProvider = AuthProvider();
 
-            // Panggil fungsi loginWithGoogle
-            await authProvider.loginWithGoogle();
+      // Panggil fungsi loginWithGoogle
+      await authProvider.loginWithGoogle();
 
-            // Setelah login, dapatkan informasi pengguna jika diperlukan
-            GoogleSignInAccount? currentUser = authProvider.currentUser;
-
+      // Setelah login, dapatkan informasi pengguna jika diperlukan
+      GoogleSignInAccount? currentUser = authProvider.currentUser;
 
       if (currentUser != null) {
         // Jika login berhasil, kirim data ke API
@@ -124,9 +123,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
               'create_account': 'yes'
             };
             print('Param kirim: $params');
-            chatAccount = await apiClient.post(
-                'https://chat.kabtour.com/api_request/',
-                data: params);
+            chatAccount = await apiClient
+                .post('https://chat.kabtour.com/api_request/', data: params);
             print('akun chat: $chatAccount');
             chatAccount = jsonDecode(chatAccount['body']);
             if (chatAccount!['success']) {
@@ -214,11 +212,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Align(
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Text(
-                            'Manggarai Barat',
-                            style: FlutterFlowTheme.of(context).displaySmall,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            'assets/images/app_launcher_icon.png',
+                            width: 120,
+                            height: 120,
+                            fit: BoxFit.cover,
                           ),
                         ),
                         Padding(

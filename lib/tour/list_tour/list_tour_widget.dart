@@ -77,11 +77,12 @@ class _ListTourWidgetState extends State<ListTourWidget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
-        await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => NavBarPage(initialPage: 'Home_Page'),
-            ));
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            NavBarPage(initialPage: 'Home_Page'),
+                      ));
                 },
               ),
               title: Text(
@@ -216,7 +217,7 @@ class _ListTourWidgetState extends State<ListTourWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 0, 20, 0),
+                                        0, 0, 0, 0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
